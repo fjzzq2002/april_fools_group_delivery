@@ -1,23 +1,23 @@
 .raleway {
-  font-family: "Raleway", sans-serif;
+	font-family: "Raleway", sans-serif;
 }
 .merriweather {
-  font-family: "Merriweather", serif;
-  letter-spacing: 1px;
+	font-family: "Merriweather", serif;
+	letter-spacing: 1px;
 }
 .montserrat {
-  font-family: "Montserrat", sans-serif;
+	font-family: "Montserrat", sans-serif;
 }
 .close-spacing {
-  letter-spacing: -0.5px;
+	letter-spacing: -0.5px;
 }
 .container-fluid {
-  margin-right: auto !important;
-  margin-left: auto !important;
-  max-width: 900px !important;
+	margin-right: auto !important;
+	margin-left: auto !important;
+	max-width: 900px !important;
 }
 .container {
-  margin-right: auto !important;
-  margin-left: auto !important;
-  max-width: 900px !important;
+	margin-right: auto !important;
+	margin-left: auto !important;
+	max-width: 900px !important;
 }
