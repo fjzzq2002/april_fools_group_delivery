@@ -83,7 +83,7 @@
 					id="display"
 					style="height: 100%"
 				>
-					\(\mathbb Z\)
+					\(G\)
 				</div>
 				<div class="col-4 bg-light p-4">
 					<div class="pl-20 pr-20">
@@ -117,7 +117,6 @@
 									name="btnradio"
 									id="btnradioxxx"
 									autocomplete="off"
-									checked
 								/>
 								<label
 									class="btn btn-outline-primary"
@@ -183,7 +182,6 @@
 									name="btnradio1"
 									id="btnradioxxxy"
 									autocomplete="off"
-									checked
 								/>
 								<label
 									class="btn btn-outline-primary"
@@ -249,7 +247,6 @@
 									name="btnradio3"
 									id="btnradioxxxz"
 									autocomplete="off"
-									checked
 								/>
 								<label
 									class="btn btn-outline-primary"
@@ -301,7 +298,6 @@
 									name="btnradio2"
 									id="btnradioxxxyy"
 									autocomplete="off"
-									checked
 								/>
 								<label
 									class="btn btn-outline-primary"
@@ -347,12 +343,14 @@
 			let order = 10;
 			let group;
 			let struc = "G";
-			let type = "\\mathcal";
+			let type = "";
 			let size = "";
 			function update() {
 				let displays = document.getElementById("display");
 				if (struc == "Z") group = "{Z_{" + order + "}}";
 				else if (struc == "D") group = "{D_{" + order + "}}";
+				else group = "G";
+				console.log(group);
 				let typed = type + "{" + group + "}";
 				let sized = size + "{" + typed + "}";
 				MathJax.typesetClear([displays]);
