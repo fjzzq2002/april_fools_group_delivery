@@ -229,6 +229,58 @@
 								class="accordion-button collapsed"
 								type="button"
 								data-bs-toggle="collapse"
+								data-bs-target="#collapse5"
+							>
+								Structure
+							</button>
+						</h2>
+						<div
+							id="collapse5"
+							class="accordion-collapse collapse show"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio3"
+									id="btnradioxxxz"
+									autocomplete="off"
+									checked
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxz"
+									id="dihedral"
+									>Dihedral Group</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio3"
+									id="btnradioxxz"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxz"
+									id="cyclic"
+									>Cyclic Group</label
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button"
+								type="button"
+								data-bs-toggle="collapse"
 								data-bs-target="#collapse4"
 							>
 								Group Order
@@ -294,11 +346,13 @@
 		<script>
 			let order = 10;
 			let group;
+			let struc = "G";
 			let type = "\\mathcal";
 			let size = "";
 			function update() {
 				let displays = document.getElementById("display");
-				group = "{Z_{" + order + "}}";
+				if (struc == "Z") group = "{Z_{" + order + "}}";
+				else if (struc == "D") group = "{D_{" + order + "}}";
 				let typed = type + "{" + group + "}";
 				let sized = size + "{" + typed + "}";
 				MathJax.typesetClear([displays]);
@@ -310,6 +364,19 @@
 				});
 			}
 
+			document
+				.getElementById("dihedral")
+				.addEventListener("click", function (event) {
+					struc = "D";
+					update();
+				});
+
+			document
+				.getElementById("cyclic")
+				.addEventListener("click", function (event) {
+					struc = "Z";
+					update();
+				});
 			document
 				.getElementById("10")
 				.addEventListener("click", function (event) {
