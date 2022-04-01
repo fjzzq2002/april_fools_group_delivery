@@ -72,7 +72,7 @@
 							<a class="nav-link" href="#">WARRANTY</a>
 						</li>
 						<li class="nav-item px-2">
-							<a class="nav-link" href="Copyright.html"
+							<a class="nav-link" href="copyright.html"
 								>CONTACT US</a
 							>
 						</li>
@@ -649,7 +649,9 @@
 			document
 				.getElementById("checkout")
 				.addEventListener("click", function (event) {
-					document.location = "charged.html?cost=" + cost + ".00";
+					document.getElementById('checkout').style.backgroundColor='orange';
+					setTimeout(
+						()=>{document.location = "charged.html?cost=" + cost + ".00";},1000+Math.random()*2000);
 				});
 
 			document
