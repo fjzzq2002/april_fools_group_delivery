@@ -97,65 +97,192 @@
 								class="accordion-button"
 								type="button"
 								data-bs-toggle="collapse"
-								data-bs-target="#collapseOne"
-								aria-expanded="true"
-								aria-controls="collapseOne"
+								data-bs-target="#collapse2"
 							>
-								Group Size
+								Font Size
 							</button>
 						</h2>
 						<div
-							id="collapseOne"
+							id="collapse2"
 							class="accordion-collapse collapse show"
-							aria-labelledby="headingOne"
-							data-bs-parent="#accordionExample"
 						>
 							<div
 								class="btn-group px-4 py-3"
 								role="group"
-								aria-label="Basic radio toggle button group"
 								style="width: 100%"
 							>
 								<input
 									type="radio"
 									class="btn-check"
 									name="btnradio"
-									id="btnradio1"
+									id="btnradioxxx"
 									autocomplete="off"
 									checked
 								/>
 								<label
 									class="btn btn-outline-primary"
-									for="btnradio1"
-									id="order10"
+									for="btnradioxxx"
+									id="S"
+									>S</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio"
+									id="btnradioxx"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxx"
+									id="M"
+									>M</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio"
+									id="btnradiox"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradiox"
+									id="L"
+									>L</label
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapse3"
+							>
+								Displaying Style
+							</button>
+						</h2>
+						<div
+							id="collapse3"
+							class="accordion-collapse collapse show"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1"
+									id="btnradioxxxy"
+									autocomplete="off"
+									checked
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxy"
+									id="style_mathrm"
+									>mathrm</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1"
+									id="btnradioxxy"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxy"
+									id="style_mathcal"
+									>mathcal</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1"
+									id="btnradioxy"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxy"
+									id="style_mathbb"
+									>mathbb</label
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapse4"
+							>
+								Group Order
+							</button>
+						</h2>
+						<div
+							id="collapse4"
+							class="accordion-collapse collapse show"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio2"
+									id="btnradioxxxyy"
+									autocomplete="off"
+									checked
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxyy"
+									id="10"
 									>10</label
 								>
 
 								<input
 									type="radio"
 									class="btn-check"
-									name="btnradio"
-									id="btnradio2"
+									name="btnradio2"
+									id="btnradioxxyy"
 									autocomplete="off"
 								/>
 								<label
 									class="btn btn-outline-primary"
-									for="btnradio2"
-									id="order14"
+									for="btnradioxxyy"
+									id="14"
 									>14</label
 								>
 
 								<input
 									type="radio"
 									class="btn-check"
-									name="btnradio"
-									id="btnradio3"
+									name="btnradio2"
+									id="btnradioxyy"
 									autocomplete="off"
 								/>
 								<label
 									class="btn btn-outline-primary"
-									for="btnradio3"
-									id="order18"
+									for="btnradioxyy"
+									id="18"
 									>18</label
 								>
 							</div>
@@ -168,33 +295,78 @@
 			let order = 10;
 			let group;
 			let type = "\\mathcal";
+			let size = "";
 			function update() {
 				let displays = document.getElementById("display");
 				group = "{Z_{" + order + "}}";
+				let typed = type + "{" + group + "}";
+				let sized = size + "{" + typed + "}";
 				MathJax.typesetClear([displays]);
-				displays.innerHTML = "\\(" + type + group + "\\)";
+				displays.innerHTML = "\\(" + sized + "\\)";
 
 				MathJax.typesetPromise([displays]).then(() => {
 					// the new content is has been typeset
 					console.log("JAJA");
 				});
 			}
+
 			document
-				.getElementById("order10")
+				.getElementById("10")
 				.addEventListener("click", function (event) {
 					order = 10;
 					update();
 				});
 			document
-				.getElementById("order18")
+				.getElementById("14")
+				.addEventListener("click", function (event) {
+					order = 14;
+					update();
+				});
+			document
+				.getElementById("18")
 				.addEventListener("click", function (event) {
 					order = 18;
 					update();
 				});
+
 			document
-				.getElementById("order14")
+				.getElementById("L")
 				.addEventListener("click", function (event) {
-					order = 14;
+					console.log("???");
+					size = "\\Huge";
+					update();
+				});
+			document
+				.getElementById("M")
+				.addEventListener("click", function (event) {
+					console.log("???");
+					size = "\\large";
+					update();
+				});
+			document
+				.getElementById("S")
+				.addEventListener("click", function (event) {
+					console.log("???");
+					size = "";
+					update();
+				});
+
+			document
+				.getElementById("style_mathbb")
+				.addEventListener("click", function (event) {
+					type = "\\mathbb";
+					update();
+				});
+			document
+				.getElementById("style_mathcal")
+				.addEventListener("click", function (event) {
+					type = "\\mathcal";
+					update();
+				});
+			document
+				.getElementById("style_mathrm")
+				.addEventListener("click", function (event) {
+					type = "\\mathrm";
 					update();
 				});
 		</script>
