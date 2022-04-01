@@ -493,6 +493,7 @@
 			let gened = 0;
 			let type = "\\mathrm";
 			let size = "?";
+			let box = "";
 			function update() {
 				let displays = document.getElementById("display");
 				if (struc == "Z") group = "{Z_{" + order + "}}";
@@ -507,9 +508,15 @@
 							order / 2 +
 							"}=1, b^2=1, ab=ba^{-1} \\rangle ";
 				}
-				console.log(group);
 				let typed = type + "{" + group + "}";
 				let sized = size + "{" + typed + "}";
+				if(box=="1") sized="\\boxed{"+sized+"}";
+				if(box=="2") sized="\\boxed{\\boxed{"+sized+"}}";
+				let colors=["blue","red","orange","green","black","purple","brown","magenta"];
+				let rndcolor=colors[Math.floor(Math.random()*colors.length)];
+				if(box=="led") sized="\\color{"+rndcolor+"}\\boxed{\\boxed{\\color{black}"+sized+"}}";
+				sized="\\large{"+sized+"}";
+				console.log(sized);
 				MathJax.typesetClear([displays]);
 				displays.innerHTML = "\\(" + sized + "\\)";
 				if (size == "?") displays.innerHTML = "";
@@ -612,7 +619,32 @@
 					type = "\\mathrm";
 					update();
 				});
-
+			document
+				.getElementById("box_no")
+				.addEventListener("click", function (event) {
+					box = "";
+					update();
+				});
+			document
+				.getElementById("box_one")
+				.addEventListener("click", function (event) {
+					box = "1";
+					update();
+				});
+			document
+				.getElementById("box_two")
+				.addEventListener("click", function (event) {
+					box = "2";
+					update();
+				});
+			document
+				.getElementById("box_led")
+				.addEventListener("click", function (event) {
+					box = "led";
+					update();
+				});
+			
+			setInterval(update,200);
 			//window.onload = update;
 		</script>
 	</body>
