@@ -294,7 +294,7 @@
 								data-bs-toggle="collapse"
 								data-bs-target="#collapsex5"
 							>
-								Generator
+								Palm Side
 							</button>
 						</h2>
 						<div
@@ -311,20 +311,6 @@
 									type="radio"
 									class="btn-check"
 									name="btnradio1145"
-									id="btnradioxxxzt"
-									autocomplete="off"
-								/>
-								<label
-									class="btn btn-outline-primary"
-									for="btnradioxxxzt"
-									id="generator"
-									>Generator</label
-								>
-
-								<input
-									type="radio"
-									class="btn-check"
-									name="btnradio1145"
 									id="btnradioxxzt"
 									autocomplete="off"
 								/>
@@ -332,7 +318,21 @@
 									class="btn btn-outline-primary"
 									for="btnradioxxzt"
 									id="symbol"
-									>Symbol</label
+									>Empty</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1145"
+									id="btnradioxxxzt"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxzt"
+									id="generator"
+									>Carved</label
 								>
 							</div>
 						</div>
@@ -349,7 +349,11 @@
 								Group Order
 							</button>
 						</h2>
-						<div id="collapse4" class="accordion-collapse collapse">
+						<div
+							id="collapse4"
+							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
+						>
 							<div
 								class="btn-group px-4 py-3"
 								role="group"
@@ -399,6 +403,86 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="accordion-item mb-1">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button collapsed rounded"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapse6"
+							>
+								Group Box
+							</button>
+						</h2>
+						<div
+							id="collapse6"
+							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio4"
+									id="btnradioaax"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioaax"
+									id="box_no"
+									>No Box</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio4"
+									id="btnradioaaxy"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioaaxy"
+									id="box_one"
+									>One Box</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio4"
+									id="btnradioaaxyz"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioaaxyz"
+									id="box_two"
+									>Two Boxes</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio4"
+									id="btnradioaaxyg"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioaaxyg"
+									id="box_led"
+									>Premium LED Box</label
+								>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -411,16 +495,15 @@
 			let size = "?";
 			function update() {
 				let displays = document.getElementById("display");
-				if (gened === 0) {
-					if (struc == "Z") group = "{Z_{" + order + "}}";
-					else if (struc == "D") group = "{D_{" + order + "}}";
-					else group = "G";
-				} else {
+				if (struc == "Z") group = "{Z_{" + order + "}}";
+				else if (struc == "D") group = "{D_{" + order + "}}";
+				else group = "G";
+				if(gened!=0) {
 					if (struc == "Z")
-						group = "\\langle a\\mid a^{" + order + "}=1 \\rangle ";
+						group += "=\\langle a\\mid a^{" + order + "}=1 \\rangle ";
 					else
-						group =
-							"\\langle a, b\\mid a^{" +
+						group +=
+							"=\\langle a, b\\mid a^{" +
 							order / 2 +
 							"}=1, b^2=1, ab=ba^{-1} \\rangle ";
 				}
