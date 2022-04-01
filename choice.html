@@ -83,7 +83,7 @@
 					id="display"
 					style="height: 100%"
 				>
-					\(G\)
+					
 				</div>
 				<div class="col-4 bg-light p-4">
 					<div class="pl-20 pr-20">
@@ -99,7 +99,7 @@
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse2"
 							>
-								Font Size
+								Size
 							</button>
 						</h2>
 						<div
@@ -164,7 +164,7 @@
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse3"
 							>
-								Displaying Style
+								Style
 							</button>
 						</h2>
 						<div
@@ -176,6 +176,7 @@
 								role="group"
 								style="width: 100%"
 							>
+
 								<input
 									type="radio"
 									class="btn-check"
@@ -187,7 +188,20 @@
 									class="btn btn-outline-primary"
 									for="btnradioxxxy"
 									id="style_mathrm"
-									>mathrm</label
+									>\(\mathrm G\)</label
+								>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1"
+									id="btnradioxxxy"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxy"
+									id="style_italics"
+									>\(G\)</label
 								>
 
 								<input
@@ -201,7 +215,7 @@
 									class="btn btn-outline-primary"
 									for="btnradioxxy"
 									id="style_mathcal"
-									>mathcal</label
+									>\(\mathcal G\)</label
 								>
 
 								<input
@@ -215,7 +229,7 @@
 									class="btn btn-outline-primary"
 									for="btnradioxy"
 									id="style_mathbb"
-									>mathbb</label
+									>\(\mathbb G\)</label
 								>
 							</div>
 						</div>
@@ -343,8 +357,8 @@
 			let order = 10;
 			let group;
 			let struc = "G";
-			let type = "";
-			let size = "";
+			let type = "\\mathrm";
+			let size = "?";
 			function update() {
 				let displays = document.getElementById("display");
 				if (struc == "Z") group = "{Z_{" + order + "}}";
@@ -355,6 +369,7 @@
 				let sized = size + "{" + typed + "}";
 				MathJax.typesetClear([displays]);
 				displays.innerHTML = "\\(" + sized + "\\)";
+				if(size=="?") displays.innerHTML = '';
 
 				MathJax.typesetPromise([displays]).then(() => {
 					// the new content is has been typeset
@@ -426,6 +441,12 @@
 				.getElementById("style_mathcal")
 				.addEventListener("click", function (event) {
 					type = "\\mathcal";
+					update();
+				});
+			document
+				.getElementById("style_italics")
+				.addEventListener("click", function (event) {
+					type = "";
 					update();
 				});
 			document
