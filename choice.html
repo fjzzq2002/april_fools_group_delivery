@@ -82,9 +82,8 @@
 					class="col-8 text-center p-4"
 					id="display"
 					style="height: 100%"
-				>
-					HH
-				</div>
+				></div>
+
 				<div class="col-4 bg-light p-4">
 					<div class="pl-20 pr-20">
 						<h6>
@@ -99,7 +98,7 @@
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse2"
 							>
-								Font Size
+								Size
 							</button>
 						</h2>
 						<div id="collapse2" class="accordion-collapse collapse">
@@ -161,7 +160,7 @@
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse3"
 							>
-								Displaying Style
+								Style
 							</button>
 						</h2>
 						<div id="collapse3" class="accordion-collapse collapse">
@@ -181,7 +180,20 @@
 									class="btn btn-outline-primary"
 									for="btnradioxxxy"
 									id="style_mathrm"
-									>mathrm</label
+									>\(\mathrm G\)</label
+								>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1"
+									id="btnradioxxxy"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxy"
+									id="style_italics"
+									>\(G\)</label
 								>
 
 								<input
@@ -195,7 +207,7 @@
 									class="btn btn-outline-primary"
 									for="btnradioxxy"
 									id="style_mathcal"
-									>mathcal</label
+									>\(\mathcal G\)</label
 								>
 
 								<input
@@ -209,7 +221,7 @@
 									class="btn btn-outline-primary"
 									for="btnradioxy"
 									id="style_mathbb"
-									>mathbb</label
+									>\(\mathbb G\)</label
 								>
 							</div>
 						</div>
@@ -258,6 +270,57 @@
 									for="btnradioxxz"
 									id="cyclic"
 									>Cyclic Group</label
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item mb-1">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapsex5"
+							>
+								Generator
+							</button>
+						</h2>
+						<div
+							id="collapsex5"
+							class="accordion-collapse collapse"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1145"
+									id="btnradioxxxzt"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxzt"
+									id="generator"
+									>Generator</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio1145"
+									id="btnradioxxzt"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxzt"
+									id="symbol"
+									>Symbol</label
 								>
 							</div>
 						</div>
@@ -331,24 +394,50 @@
 			let order = 10;
 			let group;
 			let struc = "G";
-			let type = "";
-			let size = "";
+			let gened = 0;
+			let type = "\\mathrm";
+			let size = "?";
 			function update() {
 				let displays = document.getElementById("display");
-				if (struc == "Z") group = "{Z_{" + order + "}}";
-				else if (struc == "D") group = "{D_{" + order + "}}";
-				else group = "G";
+				if (gened === 0) {
+					if (struc == "Z") group = "{Z_{" + order + "}}";
+					else if (struc == "D") group = "{D_{" + order + "}}";
+					else group = "G";
+				} else {
+					if (struc == "Z")
+						group = "\\langle a\\mid a^{" + order + "}=1 \\rangle ";
+					else
+						group =
+							"\\langle a, b\\mid a^{" +
+							order / 2 +
+							"}=1, b^2=1, ab=ba^{-1} \\rangle ";
+				}
 				console.log(group);
 				let typed = type + "{" + group + "}";
 				let sized = size + "{" + typed + "}";
 				MathJax.typesetClear([displays]);
 				displays.innerHTML = "\\(" + sized + "\\)";
+				if (size == "?") displays.innerHTML = "";
 
 				MathJax.typesetPromise([displays]).then(() => {
 					// the new content is has been typeset
 					console.log("JAJA");
 				});
 			}
+
+			document
+				.getElementById("generator")
+				.addEventListener("click", function (event) {
+					gened = 1;
+					update();
+				});
+
+			document
+				.getElementById("symbol")
+				.addEventListener("click", function (event) {
+					gened = 0;
+					update();
+				});
 
 			document
 				.getElementById("dihedral")
@@ -417,13 +506,19 @@
 					update();
 				});
 			document
+				.getElementById("style_italics")
+				.addEventListener("click", function (event) {
+					type = "";
+					update();
+				});
+			document
 				.getElementById("style_mathrm")
 				.addEventListener("click", function (event) {
 					type = "\\mathrm";
 					update();
 				});
 
-			window.onload = update;
+			//window.onload = update;
 		</script>
 	</body>
 </html>
