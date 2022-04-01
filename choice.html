@@ -83,8 +83,7 @@
 					id="display"
 					style="height: 100%"
 				></div>
-
-				<div class="col-4 bg-light p-4">
+				<div class="col-4 bg-light p-4" id="mypar">
 					<div class="pl-20 pr-20">
 						<h6>
 							<b> Please make all selections below. </b>
@@ -93,15 +92,19 @@
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
 							<button
-								class="accordion-button collapsed"
+								class="accordion-button collapsed rounded"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse2"
 							>
-								Size
+								Bazel Size
 							</button>
 						</h2>
-						<div id="collapse2" class="accordion-collapse collapse">
+						<div
+							id="collapse2"
+							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
+						>
 							<div
 								class="btn-group px-4 py-3"
 								role="group"
@@ -155,15 +158,71 @@
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
 							<button
-								class="accordion-button collapsed"
+								class="accordion-button collapsed rounded"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapse5"
+							>
+								Material
+							</button>
+						</h2>
+						<div
+							id="collapse5"
+							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio3"
+									id="btnradioxxz"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxz"
+									id="cyclic"
+									>Cyclic</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio3"
+									id="btnradioxxxz"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxz"
+									id="dihedral"
+									>Dihedral</label
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item mb-1">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button collapsed rounded"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse3"
 							>
-								Style
+								Finish
 							</button>
 						</h2>
-						<div id="collapse3" class="accordion-collapse collapse">
+						<div
+							id="collapse3"
+							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
+						>
 							<div
 								class="btn-group px-4 py-3"
 								role="group"
@@ -186,12 +245,12 @@
 									type="radio"
 									class="btn-check"
 									name="btnradio1"
-									id="btnradioxxxy"
+									id="btnradioxuy"
 									autocomplete="off"
 								/>
 								<label
 									class="btn btn-outline-primary"
-									for="btnradioxxxy"
+									for="btnradioxuy"
 									id="style_italics"
 									>\(G\)</label
 								>
@@ -230,55 +289,7 @@
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
 							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapse5"
-							>
-								Structure
-							</button>
-						</h2>
-						<div id="collapse5" class="accordion-collapse collapse">
-							<div
-								class="btn-group px-4 py-3"
-								role="group"
-								style="width: 100%"
-							>
-								<input
-									type="radio"
-									class="btn-check"
-									name="btnradio3"
-									id="btnradioxxxz"
-									autocomplete="off"
-								/>
-								<label
-									class="btn btn-outline-primary"
-									for="btnradioxxxz"
-									id="dihedral"
-									>Dihedral Group</label
-								>
-
-								<input
-									type="radio"
-									class="btn-check"
-									name="btnradio3"
-									id="btnradioxxz"
-									autocomplete="off"
-								/>
-								<label
-									class="btn btn-outline-primary"
-									for="btnradioxxz"
-									id="cyclic"
-									>Cyclic Group</label
-								>
-							</div>
-						</div>
-					</div>
-
-					<div class="accordion-item mb-1">
-						<h2 class="accordion-header" id="headingOne">
-							<button
-								class="accordion-button collapsed"
+								class="accordion-button collapsed rounded"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#collapsex5"
@@ -289,6 +300,7 @@
 						<div
 							id="collapsex5"
 							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
 						>
 							<div
 								class="btn-group px-4 py-3"
@@ -391,7 +403,7 @@
 			</div>
 		</div>
 		<script>
-			let order = 10;
+			let order = "";
 			let group;
 			let struc = "G";
 			let gened = 0;
@@ -482,14 +494,14 @@
 				.getElementById("M")
 				.addEventListener("click", function (event) {
 					console.log("???");
-					size = "\\large";
+					size = "\\huge";
 					update();
 				});
 			document
 				.getElementById("S")
 				.addEventListener("click", function (event) {
 					console.log("???");
-					size = "";
+					size = "\\Large";
 					update();
 				});
 
