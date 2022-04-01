@@ -78,25 +78,40 @@
 		</nav>
 		<div class="">
 			<div class="row">
-				<div
-					class="col-8 text-center p-4"
-				>
-			<div id="display" style="height: 150px; display:flex; align-items: center; justify-content: center;"></div>
-			<div class="d-flex" style="width: 100%; align-items: center; justify-content: center;">
-				<div id="cgimg">
-						<img
-						class="mt-3"
-						style="border: 1px; width: 300px; height: 300px"
-						src="cyclic_group.svg"
-					/></div>
-					<div id="dgimg" style="display:none">
-					<img
-					class="mt-3 ms-5 me-2"
-					style="border: 1px; width: 350px; height: 300px"
-					src="dihedral_group.svg"
-				/></div>
-			</div>
-			</div>
+				<div class="col-8 text-center p-4">
+					<div
+						id="display"
+						style="
+							height: 150px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+						"
+					></div>
+					<div
+						class="d-flex"
+						style="
+							width: 100%;
+							align-items: center;
+							justify-content: center;
+						"
+					>
+						<div id="cgimg">
+							<img
+								class="mt-3"
+								style="border: 1px; width: 300px; height: 300px"
+								src="cyclic_group.svg"
+							/>
+						</div>
+						<div id="dgimg" style="display: none">
+							<img
+								class="mt-3 ms-5 me-2"
+								style="border: 1px; width: 350px; height: 300px"
+								src="dihedral_group.svg"
+							/>
+						</div>
+					</div>
+				</div>
 				<div class="col-4 bg-light p-4" id="mypar">
 					<div class="pl-20 pr-20">
 						<h6>
@@ -508,36 +523,78 @@
 			let type = "\\mathrm";
 			let size = "\\Large";
 			let box = "";
+			let cost = 0;
+			let dec = 10;
 			function update() {
+				cost = 0;
 				let displays = document.getElementById("display");
 				if (struc == "Z") group = "{Z_{" + order + "}}";
 				else if (struc == "D") group = "{D_{" + order + "}}";
 				else group = "G";
-				if(struc=="D") {
-					document.getElementById('dgimg').style.display='block';
-					document.getElementById('cgimg').style.display='none';
+				let ccost = 0;
+				let wei = 0;
+				if (size === "\\Large") {
+					if (order === 10) ccost = 612;
+					if (order === 14) ccost = 780;
+					if (order === 18) ccost = 1106;
+				} else if (size == "\\huge") {
+					if (order === 10) ccost = 815;
+					if (order === 14) ccost = 1114;
+					if (order === 18) ccost = 1571;
+				} else if (size == "\\Huge") {
+					if (order === 10) ccost = 955;
+					if (order === 14) ccost = 1277;
+					if (order === 18) ccost = 1868;
 				}
-				else {
-					document.getElementById('cgimg').style.display='block';
-					document.getElementById('dgimg').style.display='none';
+				if (struc == "D") ccost += 100;
+				ccost = Math.floor(ccost);
+				cost = ccost;
+				if (struc == "D") {
+					document.getElementById("dgimg").style.display = "block";
+					document.getElementById("cgimg").style.display = "none";
+				} else {
+					document.getElementById("cgimg").style.display = "block";
+					document.getElementById("dgimg").style.display = "none";
 				}
-				if(gened!=0) {
+				if (gened != 0) {
 					if (struc == "Z")
-						group += "=\\langle a\\mid a^{" + order + "}=1 \\rangle ";
+						group +=
+							"=\\langle a\\mid a^{" + order + "}=1 \\rangle ";
 					else
 						group +=
 							"=\\langle a, b\\mid a^{" +
 							order / 2 +
 							"}=1, b^2=1, ab=ba^{-1} \\rangle ";
+					cost += 30;
 				}
 				let typed = type + "{" + group + "}";
 				let sized = size + "{" + typed + "}";
-				if(box=="1") sized="\\boxed{"+sized+"}";
-				if(box=="2") sized="\\boxed{\\boxed{"+sized+"}}";
-				let colors=["blue","red","orange","green","black","purple","brown","magenta"];
-				let rndcolor=colors[Math.floor(Math.random()*colors.length)];
-				if(box=="led") sized="\\color{"+rndcolor+"}\\boxed{\\boxed{\\color{black}"+sized+"}}";
-				sized="\\large{"+sized+"}";
+				if (box == "1")
+					(sized = "\\boxed{" + sized + "}"), (cost += 20);
+				if (box == "2")
+					(sized = "\\boxed{\\boxed{" + sized + "}}"), (cost += 30);
+				let colors = [
+					"blue",
+					"red",
+					"orange",
+					"green",
+					"black",
+					"purple",
+					"brown",
+					"magenta",
+				];
+				let rndcolor =
+					colors[Math.floor(Math.random() * colors.length)];
+				if (box == "led")
+					(sized =
+						"\\color{" +
+						rndcolor +
+						"}\\boxed{\\boxed{\\color{black}" +
+						sized +
+						"}}"),
+						(cost += 55);
+				console.log(cost);
+				sized = "\\large{" + sized + "}";
 				console.log(sized);
 				MathJax.typesetClear([displays]);
 				displays.innerHTML = "\\(" + sized + "\\)";
@@ -665,8 +722,8 @@
 					box = "led";
 					update();
 				});
-			
-			setInterval(update,200);
+
+			setInterval(update, 200);
 			window.onload = update;
 		</script>
 	</body>
