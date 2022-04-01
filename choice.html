@@ -70,7 +70,9 @@
 							<a class="nav-link" href="#">WARRANTY</a>
 						</li>
 						<li class="nav-item px-2">
-							<a class="nav-link" href="#">CONTACT US</a>
+							<a class="nav-link" href="Copyright.html"
+								>CONTACT US</a
+							>
 						</li>
 					</ul>
 				</div>
@@ -113,10 +115,11 @@
 					</div>
 				</div>
 				<div class="col-4 bg-light p-4" id="mypar">
-					<div class="pb-1" style="font-weight: 600; letter-spacing: 0.2px;">
-						<h6>
-							Please make all selections below.
-						</h6>
+					<div
+						class="pb-1"
+						style="font-weight: 600; letter-spacing: 0.2px"
+					>
+						<h6>Please make all selections below.</h6>
 					</div>
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
@@ -512,16 +515,25 @@
 							</div>
 						</div>
 					</div>
-					<div style="width:100%; font-size: 25px; font-weight: 500; letter-spacing: 0.5px;"
-					class="text-end pe-2 pt-2 raleway" id="money">
+					<div
+						style="
+							width: 100%;
+							font-size: 25px;
+							font-weight: 500;
+							letter-spacing: 0.5px;
+						"
+						class="text-end pe-2 pt-2 raleway"
+						id="money"
+					>
 						$0.00
 					</div>
-					<div style="width:100%"
-					class="text-end pe-2 pt-2">
-					<button class="btn btn-danger raleway"
-					style="background-color: red !important;">
-						Checkout
-					</button>
+					<div style="width: 100%" class="text-end pe-2 pt-2">
+						<button
+							class="btn btn-danger raleway"
+							style="background-color: red !important"
+						>
+							Checkout
+						</button>
 					</div>
 				</div>
 			</div>
@@ -555,9 +567,9 @@
 				} else if (size == "\\Huge") {
 					if (order === 10) ccost = 955;
 					if (order === 14) ccost = 1277;
-					if (order === 18) ccost = 1868;
+					if (order === 18) ccost = 1869;
 				}
-				if (struc == "D") ccost += 100;
+				if (struc == "D") ccost += 70;
 				ccost = Math.floor(ccost);
 				cost = ccost;
 				if (struc == "D") {
@@ -604,7 +616,7 @@
 						sized +
 						"}}"),
 						(cost += 55);
-				document.getElementById('money').innerHTML='$'+cost+'.00';
+				document.getElementById("money").innerHTML = "$" + cost + ".00";
 				sized = "\\large{" + sized + "}";
 				console.log(sized);
 				MathJax.typesetClear([displays]);
