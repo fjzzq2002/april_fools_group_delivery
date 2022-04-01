@@ -94,12 +94,12 @@
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
 							<button
-								class="accordion-button collapsed"
+								class="accordion-button collapsed rounded"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse2"
 							>
-								Size
+								Bazel Size
 							</button>
 						</h2>
 						<div
@@ -160,12 +160,64 @@
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
 							<button
-								class="accordion-button collapsed"
+								class="accordion-button collapsed rounded"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#collapse5"
+							>
+								Material
+							</button>
+						</h2>
+						<div
+							id="collapse5"
+							class="accordion-collapse collapse"
+							data-bs-parent="#mypar"
+						>
+							<div
+								class="btn-group px-4 py-3"
+								role="group"
+								style="width: 100%"
+							>
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio3"
+									id="btnradioxxz"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxz"
+									id="cyclic"
+									>Cyclic</label
+								>
+
+								<input
+									type="radio"
+									class="btn-check"
+									name="btnradio3"
+									id="btnradioxxxz"
+									autocomplete="off"
+								/>
+								<label
+									class="btn btn-outline-primary"
+									for="btnradioxxxz"
+									id="dihedral"
+									>Dihedral</label
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-item mb-1">
+						<h2 class="accordion-header" id="headingOne">
+							<button
+								class="accordion-button collapsed rounded"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse3"
 							>
-								Style
+								Finish
 							</button>
 						</h2>
 						<div
@@ -196,12 +248,12 @@
 									type="radio"
 									class="btn-check"
 									name="btnradio1"
-									id="btnradioxxxy"
+									id="btnradioxuy"
 									autocomplete="off"
 								/>
 								<label
 									class="btn btn-outline-primary"
-									for="btnradioxxxy"
+									for="btnradioxuy"
 									id="style_italics"
 									>\(G\)</label
 								>
@@ -240,64 +292,12 @@
 					<div class="accordion-item mb-1">
 						<h2 class="accordion-header" id="headingOne">
 							<button
-								class="accordion-button collapsed"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#collapse5"
-							>
-								Structure
-							</button>
-						</h2>
-						<div
-							id="collapse5"
-							class="accordion-collapse collapse"
-							data-bs-parent="#mypar"
-						>
-							<div
-								class="btn-group px-4 py-3"
-								role="group"
-								style="width: 100%"
-							>
-								<input
-									type="radio"
-									class="btn-check"
-									name="btnradio3"
-									id="btnradioxxxz"
-									autocomplete="off"
-								/>
-								<label
-									class="btn btn-outline-primary"
-									for="btnradioxxxz"
-									id="dihedral"
-									>Dihedral Group</label
-								>
-
-								<input
-									type="radio"
-									class="btn-check"
-									name="btnradio3"
-									id="btnradioxxz"
-									autocomplete="off"
-								/>
-								<label
-									class="btn btn-outline-primary"
-									for="btnradioxxz"
-									id="cyclic"
-									>Cyclic Group</label
-								>
-							</div>
-						</div>
-					</div>
-
-					<div class="accordion-item mb-1">
-						<h2 class="accordion-header" id="headingOne">
-							<button
-								class="accordion-button collapsed"
+								class="accordion-button collapsed rounded"
 								type="button"
 								data-bs-toggle="collapse"
 								data-bs-target="#collapse4"
 							>
-								Group Order
+								Group Size
 							</button>
 						</h2>
 						<div
@@ -358,7 +358,7 @@
 			</div>
 		</div>
 		<script>
-			let order = 10;
+			let order = "";
 			let group;
 			let struc = "G";
 			let type = "\\mathrm";
@@ -424,14 +424,14 @@
 				.getElementById("M")
 				.addEventListener("click", function (event) {
 					console.log("???");
-					size = "\\large";
+					size = "\\huge";
 					update();
 				});
 			document
 				.getElementById("S")
 				.addEventListener("click", function (event) {
 					console.log("???");
-					size = "";
+					size = "\\Large";
 					update();
 				});
 
