@@ -113,9 +113,9 @@
 					</div>
 				</div>
 				<div class="col-4 bg-light p-4" id="mypar">
-					<div class="pl-20 pr-20">
+					<div class="pb-1" style="font-weight: 600; letter-spacing: 0.2px;">
 						<h6>
-							<b> Please make all selections below. </b>
+							Please make all selections below.
 						</h6>
 					</div>
 					<div class="accordion-item mb-1">
@@ -512,6 +512,17 @@
 							</div>
 						</div>
 					</div>
+					<div style="width:100%; font-size: 25px; font-weight: 500; letter-spacing: 0.5px;"
+					class="text-end pe-2 pt-2 raleway" id="money">
+						$0.00
+					</div>
+					<div style="width:100%"
+					class="text-end pe-2 pt-2">
+					<button class="btn btn-danger raleway"
+					style="background-color: red !important;">
+						Checkout
+					</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -593,7 +604,7 @@
 						sized +
 						"}}"),
 						(cost += 55);
-				console.log(cost);
+				document.getElementById('money').innerHTML='$'+cost+'.00';
 				sized = "\\large{" + sized + "}";
 				console.log(sized);
 				MathJax.typesetClear([displays]);
