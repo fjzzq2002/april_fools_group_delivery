@@ -531,6 +531,7 @@
 						<button
 							class="btn btn-danger raleway"
 							style="background-color: red !important"
+							id="checkout"
 						>
 							Checkout
 						</button>
@@ -641,6 +642,12 @@
 				.addEventListener("click", function (event) {
 					gened = 0;
 					update();
+				});
+
+			document
+				.getElementById("checkout")
+				.addEventListener("click", function (event) {
+					document.location = "charged.html?cost=" + cost + ".00";
 				});
 
 			document

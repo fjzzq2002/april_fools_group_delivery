@@ -77,7 +77,7 @@
 			style="font-weight: 800"
 		>
 			<p style="font-size: 50px">Thank you!</p>
-			<p style="font-size: 30px">
+			<p style="font-size: 30px" id="charged">
 				Your credit card has been charged $9876.54.
 			</p>
 			<div
@@ -112,11 +112,10 @@
 		</div>
 		<script>
 			let a = 0;
-			document
-				.getElementById("design")
-				.addEventListener("click", function (event) {
-					document.location = "choice.html";
-				});
+			let x = location.search;
+			let ind = x.indexOf("=");
+			document.getElementById("charged").innerHTML =
+				"Your credit card has been charged $" + x.substring(ind + 1);
 		</script>
 	</body>
 </html>
